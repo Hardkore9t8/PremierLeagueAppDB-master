@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Sun Dec 09 15:07:23 EST 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0167-9494-dc55-000006d64880 
-on database directory /Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/PLeagueDB with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
-Loaded from file:/Users/DaddyNupe/OneDriveFGCU/OneDrive%20-%20Florida%20Gulf%20Coast%20University/PremierLeagueAppDB-master/lib/derby.jar
+Mon Dec 10 17:18:41 EST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0167-9a33-7000-00000c9057a8 
+on database directory C:\Users\nash\PremierLeagueAppDB-master\PLeagueDB with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/C:/Users/nash/PremierLeagueAppDB-master/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_121-b13
-user.dir=/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master
-os.name=Mac OS X
-os.arch=x86_64
-os.version=10.14
+java.runtime.version=1.8.0_181-b13
+user.dir=C:\Users\nash\PremierLeagueAppDB-master
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

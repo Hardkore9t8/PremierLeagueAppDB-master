@@ -14,6 +14,9 @@ public class DBConnection {
     private static Statement stmt = null;
 
 
+    /**
+     *
+     */
     public static void getConnection() {
         String db_URL = "jdbc:derby:PLeagueDB;create=true";
 
@@ -36,6 +39,9 @@ public class DBConnection {
         setupTeamTable();
     }
 
+    /**
+     *
+     */
     static void setupTeamTable() {
         String tableName = "TEAM";
 
@@ -58,6 +64,10 @@ public class DBConnection {
         }
     }
 
+    /**
+     * @param sqlStr
+     * @return
+     */
     public static ResultSet sqlQuery(String sqlStr) {
         System.out.println(sqlStr);
         ResultSet rs;
@@ -71,6 +81,10 @@ public class DBConnection {
         return rs;
     }
 
+    /**
+     * @param sqlStr
+     * @return
+     */
     public static boolean sqlInsert(String sqlStr) {
         try {
             stmt = connection.createStatement();
@@ -84,17 +98,34 @@ public class DBConnection {
 
     }
 
+    /**
+     * @param sqlStr
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SqlException
+     */
     public static ObservableList<TableTeam> getSelectedRecords(String sqlStr) throws ClassNotFoundException, SqlException {
         ResultSet rs = sqlQuery(sqlStr);
         return getTeamObjects(rs);
     }
 
+    /**
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SqlException
+     */
     public static ObservableList<TableTeam> getAllRecords() throws ClassNotFoundException, SqlException {
         String sql = "Select * From Team";
         ResultSet rs = sqlQuery(sql);
         return getTeamObjects(rs);
     }
 
+    /**
+     * @param rs
+     * @return
+     * @throws ClassNotFoundException
+     * @throws SqlException
+     */
     private static ObservableList<TableTeam> getTeamObjects(ResultSet rs) throws ClassNotFoundException, SqlException {
         ObservableList<TableTeam> teamList = FXCollections.observableArrayList();
 

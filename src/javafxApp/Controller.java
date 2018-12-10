@@ -19,12 +19,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+import static connection.DBConnection.sqlInsert;
+
 //this is the controller class for the fxml
 public class Controller implements Initializable {
 
     public TextField teamtextfield;
     public TextField playertextfield;
     public TextField countrytextfield;
+    public TextField addTeamTextF;
+    public TextField addNameTextF;
+    public TextField addAgeTextF;
+    public TextField addPositionTextF;
+    public TextField addPointsTextF;
+    public TextField addCountryTextF;
     public Label teamLabel;
     public Label playerLabel;
     public Button teambutton;
@@ -32,6 +40,8 @@ public class Controller implements Initializable {
     public Button resetbutton;
     public Button countrybutton;
     public Button clearbutton;
+    public Button addbutton;
+    public Button deletebutton;
 
 
     @FXML
@@ -49,6 +59,10 @@ public class Controller implements Initializable {
     @FXML
     private TableColumn<TableTeam, String> col_country;
 
+    /**
+     * @param location
+     * @param resources
+     */
     // create array to hold table objects
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -66,7 +80,9 @@ public class Controller implements Initializable {
     }
 
 
-
+    /**
+     * @param sqlStr
+     */
     private void populateTableList(String sqlStr) {
         ObservableList<TableTeam> teamList = null;
         try {
@@ -78,11 +94,20 @@ public class Controller implements Initializable {
         }
         TeamTable.setItems(teamList);
     }
+
+    /**
+     * @param actionEvent
+     * @throws SQLException
+     */
     public void resetbutton(ActionEvent actionEvent) throws SQLException {
         String sqlStr = "Select * From Team";
         populateTableList(sqlStr);
     }
 
+    /**
+     * @param actionEvent
+     * @throws SQLException
+     */
     public void teambutton(ActionEvent actionEvent) throws SQLException {
         TeamTable.getItems().clear();
         String team = teamtextfield.getText();
@@ -92,6 +117,10 @@ public class Controller implements Initializable {
         populateTableList(sqlStr);
     }
 
+    /**
+     * @param actionEvent
+     * @throws SQLException
+     */
     public void playerbutton(ActionEvent actionEvent) throws SQLException {
         TeamTable.getItems().clear();
         String player = playertextfield.getText();
@@ -99,13 +128,44 @@ public class Controller implements Initializable {
         String sqlStr = "Select * From Team Where Name = '" + player + "'";
         populateTableList(sqlStr);
     }
+
+    /**
+     * @param actionEvent
+     * @throws SQLException
+     */
     public void countrybutton(ActionEvent actionEvent) throws SQLException {
         TeamTable.getItems().clear();
         String country = countrytextfield.getText();
-        String sqlStr = "Select * From Team Where Country = '" + country + "'Order By country";
+        String sqlStr = "Select * From Team Where Country = '" + country + "'Order By name";
         populateTableList(sqlStr);
     }
+
+    /**
+     * @param actionEvent
+     */
     public void clearbutton(ActionEvent actionEvent) {
         TeamTable.getItems().clear();
+    }
+
+    /**
+     * @param actionEvent
+     */
+    public void addbutton(ActionEvent actionEvent){
+        TeamTable.getItems().clear();
+
+        String team = addTeamTextF.getText();
+        String name = addNameTextF.getText();
+        String age =  addAgeTextF.getText();
+        String points = addPointsTextF.getText();
+        String position = addPositionTextF.getText();
+        String country = addCountryTextF.getText();
+
+        String sqlStr = "INSERT INTO TEAM(ID,Team,Name,Age,Points,Position,Country)"+
+        "VALUES(463,"+ team+ ','+ name +','+ age + ','+ points +','+position+','+country+")";
+
+        sqlInsert(sqlStr);
+        String sqlStr2 = "Select * From Team Where Name = '" + name + "'Order By name";
+        populateTableList(sqlStr2);
+
     }
 }
