@@ -1,3 +1,5 @@
+
+
 package connection;
 
 import javafx.collections.FXCollections;
@@ -12,10 +14,11 @@ public class DBConnection {
     //database connection
     public static java.sql.Connection connection;
     private static Statement stmt = null;
+    public static int recordID = 0;
 
 
     /**
-     *
+     * This method connection starts the connection to the database
      */
     public static void getConnection() {
         String db_URL = "jdbc:derby:PLeagueDB;create=true";
@@ -35,12 +38,29 @@ public class DBConnection {
         } catch (InstantiationException e) {
             e.printStackTrace();
         }
+        getRecordID();
+        //setupTeamTable(); only used this to create table the first time
+    }
 
-        setupTeamTable();
+    private static void getRecordID() {
+        String sqlStr = "SELECT ID From team order by id desc FETCH FIRST row only";
+        ResultSet rs = sqlQuery(sqlStr);
+        try {
+            rs.next();
+            recordID = rs.getInt("id");
+            System.out.println("Last record id " + recordID);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     /**
-     *
+     * This method makes a connection to the database.
+     * Then it uses a result set method to check the database for the table named TEAM
+     * If the table is not there it will create the table
      */
     static void setupTeamTable() {
         String tableName = "TEAM";
@@ -66,7 +86,7 @@ public class DBConnection {
 
     /**
      * @param sqlStr
-     * @return
+     * @return rs
      */
     public static ResultSet sqlQuery(String sqlStr) {
         System.out.println(sqlStr);
@@ -83,7 +103,7 @@ public class DBConnection {
 
     /**
      * @param sqlStr
-     * @return
+     * @return boolean
      */
     public static boolean sqlInsert(String sqlStr) {
         try {
@@ -100,7 +120,7 @@ public class DBConnection {
 
     /**
      * @param sqlStr
-     * @return
+     * @return getTeamObjects(rs)
      * @throws ClassNotFoundException
      * @throws SqlException
      */
@@ -122,7 +142,7 @@ public class DBConnection {
 
     /**
      * @param rs
-     * @return
+     * @return teamList
      * @throws ClassNotFoundException
      * @throws SqlException
      */
@@ -141,7 +161,6 @@ public class DBConnection {
                 team.setCountry(rs.getString("Country"));
                 teamList.add(team);
             }
-//test
         } catch (SQLException ex) {
             System.out.println("SQL Exception: " + ex.getMessage());
         }

@@ -74,13 +74,14 @@ public class Controller implements Initializable {
         col_points.setCellValueFactory(cellData -> cellData.getValue().getPlayerPoints().asObject());
         col_position.setCellValueFactory(cellData -> cellData.getValue().getPlayerPosition());
         col_country.setCellValueFactory(cellData -> cellData.getValue().getPlayerCountry());
-        //String sqlStr = "Select * From Team";
-        //populateTableList(sqlStr);
+
 
     }
 
 
     /**
+     * This method populates the uses the DBConnection
+     *
      * @param sqlStr
      */
     private void populateTableList(String sqlStr) {
@@ -96,6 +97,9 @@ public class Controller implements Initializable {
     }
 
     /**
+     * This method performs an action event that resets the tableview and runs a sql query that displays all records
+     * in the database
+     *
      * @param actionEvent
      * @throws SQLException
      */
@@ -105,6 +109,8 @@ public class Controller implements Initializable {
     }
 
     /**
+     * This method performs an action event that runs an sql query using the text entered into the team text field
+     *
      * @param actionEvent
      * @throws SQLException
      */
@@ -118,6 +124,8 @@ public class Controller implements Initializable {
     }
 
     /**
+     * This method performs an action event that runs an sql query using the text entered into the player text field
+     *
      * @param actionEvent
      * @throws SQLException
      */
@@ -130,6 +138,8 @@ public class Controller implements Initializable {
     }
 
     /**
+     * This method performs an action event that runs an sql query using the text entered into the country text field
+     *
      * @param actionEvent
      * @throws SQLException
      */
@@ -141,6 +151,8 @@ public class Controller implements Initializable {
     }
 
     /**
+     * The method performs an action event that clears the tableview
+     *
      * @param actionEvent
      */
     public void clearbutton(ActionEvent actionEvent) {
@@ -148,24 +160,27 @@ public class Controller implements Initializable {
     }
 
     /**
+     * This method performs an action event that adds a record to the database
+     *
      * @param actionEvent
      */
-    public void addbutton(ActionEvent actionEvent){
+    public void addbutton(ActionEvent actionEvent) {
         TeamTable.getItems().clear();
 
         String team = addTeamTextF.getText();
         String name = addNameTextF.getText();
-        String age =  addAgeTextF.getText();
+        String age = addAgeTextF.getText();
         String points = addPointsTextF.getText();
         String position = addPositionTextF.getText();
         String country = addCountryTextF.getText();
-
-        String sqlStr = "INSERT INTO TEAM(ID,Team,Name,Age,Points,Position,Country)"+
-        "VALUES(463,"+ team+ ','+ name +','+ age + ','+ points +','+position+','+country+")";
+        String recID = String.valueOf(++DBConnection.recordID);
+        String sqlStr = "INSERT INTO TEAM(ID,Team,Name,Age,Points,Position,Country)" +
+                "VALUES("+recID+",'" + team + "','" + name + "'," + age + "," + points + ",'" + position + "','" + country + "')";
 
         sqlInsert(sqlStr);
-        String sqlStr2 = "Select * From Team Where Name = '" + name + "'Order By name";
+        String sqlStr2 = "Select * From Team Where id = "+recID;
         populateTableList(sqlStr2);
 
     }
+    //public void deletebutton()
 }
