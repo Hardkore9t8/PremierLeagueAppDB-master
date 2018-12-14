@@ -19,4 +19,6 @@ Things I would like to improve in a future version.
 Show player images and video clips when player query is performed
 Improve validation for user input.
 Rebuild database to use auto-numbering of for record id which is the primary key for each record. 
+The GUI I built for the database used a number of best practices for GUI design such as proper spacing, visual cues that provided feedback
+to the user, css styling that alerted the user if a button or action was critical or not.
 
