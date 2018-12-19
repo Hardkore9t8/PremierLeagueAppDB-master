@@ -240,6 +240,34 @@ public class Controller implements Initializable {
 
     }
 
+    public String imgSelector(String imgString) {
+
+
+        int img = 0;
+        switch (img) {
+            case 1:
+                imgString = "C:\\Users\\nash\\PremierLeagueAppDB-master\\src\\images\\Arsenal.png";
+                break;
+            case 2:
+                imgString = "C:\\Users\\nash\\PremierLeagueAppDB-master\\src\\images\\Chelsea.png";
+        }
+        return imgString;
+    }
+
+  /*  FileInputStream input = null;
+
+    {
+            try{
+            input=new FileInputStream(imgSelector(teamtextfield.getText()));
+            }catch(FileNotFoundException e1){
+            e1.printStackTrace();
+            }
+            }
+            Image image=new Image(input);*/
+//imageDisplay = new ImageView(image);
+//imageDisplay.setImage(image);
+
+
 /*
 
     FileInputStream inputstream;
@@ -261,4 +289,4 @@ public class Controller implements Initializable {
 //Image image = new Image(new FileInputStream("url for the image));
 */
 
-}
+            }
