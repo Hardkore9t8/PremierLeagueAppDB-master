@@ -100,7 +100,10 @@
             <Label layoutX="585.0" layoutY="356.0" prefHeight="27.0" prefWidth="157.0" text="Message Console" />
             <TextField fx:id="playerIdTF" layoutX="386.0" layoutY="699.0" promptText="Enter in player id" />
             <CheckBox fx:id="checkbox" layoutX="386.0" layoutY="733.0" mnemonicParsing="false" text="All deletions are final" textFill="#cc2c2c" />
-            <ImageView fx:id="textfieldImage" fitHeight="150.0" fitWidth="200.0" layoutX="217.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="textfieldImage" fitHeight="150.0" fitWidth="200.0" layoutX="217.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="..\images\Arsenal.png" />
+               </image></ImageView>
             </children>
             <effect>
                 <Blend />
