@@ -10,8 +10,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.apache.derby.client.am.SqlException;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -45,6 +49,7 @@ public class Controller implements Initializable {
     public Button deletebutton;
     public TextArea messagebox;
     public CheckBox checkbox;
+    public ImageView textfieldImage;
 
 
     @FXML
@@ -61,6 +66,8 @@ public class Controller implements Initializable {
     private TableColumn<TableTeam, Integer> col_points;
     @FXML
     private TableColumn<TableTeam, String> col_country;
+    @FXML
+    private TableColumn<TableTeam, Integer> col_ID;
 
     /**
      * @param location
@@ -71,6 +78,7 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         DBConnection.getConnection();
         Connection con = DBConnection.connection;
+        col_ID.setCellValueFactory(cellData -> cellData.getValue().getTeamId().asObject());
         col_team.setCellValueFactory(cellData -> cellData.getValue().getTeamName());
         col_name.setCellValueFactory(cellData -> cellData.getValue().getPlayerName());
         col_age.setCellValueFactory(cellData -> cellData.getValue().getPlayerAge().asObject());
@@ -124,6 +132,9 @@ public class Controller implements Initializable {
         String sqlStr = "Select * From Team Where Team = '" + team + "' Order By name";
         populateTableList(sqlStr);
         messagebox.setText("Here all the records for " + team + " sorted by player name.");
+        teamtextfield.clear();
+        //textfieldImage.setImage(image);
+
     }
 
     /**
@@ -138,6 +149,7 @@ public class Controller implements Initializable {
         String sqlStr = "Select * From Team Where Name = '" + player + "'";
         populateTableList(sqlStr);
         messagebox.setText("Here is the record for " + player);
+        playertextfield.clear();
     }
 
     /**
@@ -152,6 +164,7 @@ public class Controller implements Initializable {
         String sqlStr = "Select * From Team Where Country = '" + country + "'Order By name";
         populateTableList(sqlStr);
         messagebox.setText("Here are all the records for players from " + country);
+        countrytextfield.clear();
     }
 
     /**
@@ -195,7 +208,8 @@ public class Controller implements Initializable {
 
     /**
      * This method deletes records from the database. Checkbox must be checked or alert warning will notify user.
-     *If checkbox is check record is deleted and message appears in message console
+     * If checkbox is check record is deleted and message appears in message console
+     *
      * @param actionEvent
      * @throws ClassNotFoundException
      * @throws SQLException
@@ -215,7 +229,7 @@ public class Controller implements Initializable {
                 String id = playerIdTF.getText();
                 String sqlStr = "DELETE FROM team WHERE ID = " + id;
                 sqlInsert(sqlStr);
-                messagebox.setText("Player with id" + id +" was deleted successfully.");
+                messagebox.setText("Player with id" + id + " was deleted successfully.");
             } catch (Exception e) {
                 System.out.println("Error occured while deleting record " + e);
                 e.printStackTrace();
@@ -225,4 +239,54 @@ public class Controller implements Initializable {
         }
 
     }
-}
+
+    public String imgSelector(String imgString) {
+
+
+        int img = 0;
+        switch (img) {
+            case 1:
+                imgString = "C:\\Users\\nash\\PremierLeagueAppDB-master\\src\\images\\Arsenal.png";
+                break;
+            case 2:
+                imgString = "C:\\Users\\nash\\PremierLeagueAppDB-master\\src\\images\\Chelsea.png";
+        }
+        return imgString;
+    }
+
+  /*  FileInputStream input = null;
+
+    {
+            try{
+            input=new FileInputStream(imgSelector(teamtextfield.getText()));
+            }catch(FileNotFoundException e1){
+            e1.printStackTrace();
+            }
+            }
+            Image image=new Image(input);*/
+//imageDisplay = new ImageView(image);
+//imageDisplay.setImage(image);
+
+
+/*
+
+    FileInputStream inputstream;
+    String country = countrytextfield.getText();
+    String player = playertextfield.getText();
+    String team = teamtextfield.getText();
+
+    {
+        try {
+            inputstream = new FileInputStream("images\\" + team + ".png ");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+        Image image = new Image(inputstream);
+
+//Loading image from URL
+//Image image = new Image(new FileInputStream("url for the image));
+*/
+
+            }

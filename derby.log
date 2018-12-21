@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Thu Dec 13 11:15:26 EST 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0167-a859-f0d8-00000c97c6d8 
+Wed Dec 19 15:56:21 EST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0167-c841-49c2-00000c968cd8 
 on database directory C:\Users\nash\PremierLeagueAppDB-master\PLeagueDB with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
 Loaded from file:/C:/Users/nash/PremierLeagueAppDB-master/lib/derby.jar
 java.vendor=Oracle Corporation
@@ -10,9 +10,4 @@ os.name=Windows 10
 os.arch=amd64
 os.version=10.0
 derby.system.home=null
-------------  Begin Error Message -------------
-
-System may be in a inconsistent state, missing file C:\Users\nash\PremierLeagueAppDB-master\PLeagueDB\log\log4.dat
-------------  End Error Message -------------
-
 Database Class Loader started - derby.database.classpath=''
