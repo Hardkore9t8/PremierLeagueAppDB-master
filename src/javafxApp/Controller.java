@@ -133,7 +133,8 @@ public class Controller implements Initializable {
         populateTableList(sqlStr);
         messagebox.setText("Here all the records for " + team + " sorted by player name.");
         teamtextfield.clear();
-        //textfieldImage.setImage(image);
+        imgSelector(team);
+
 
     }
 
@@ -150,6 +151,7 @@ public class Controller implements Initializable {
         populateTableList(sqlStr);
         messagebox.setText("Here is the record for " + player);
         playertextfield.clear();
+        imgSelector(player);
     }
 
     /**
@@ -165,6 +167,7 @@ public class Controller implements Initializable {
         populateTableList(sqlStr);
         messagebox.setText("Here are all the records for players from " + country);
         countrytextfield.clear();
+        imgSelector(country);
     }
 
     /**
@@ -229,7 +232,7 @@ public class Controller implements Initializable {
                 String id = playerIdTF.getText();
                 String sqlStr = "DELETE FROM team WHERE ID = " + id;
                 sqlInsert(sqlStr);
-                messagebox.setText("Player with id" + id + " was deleted successfully.");
+                messagebox.setText("Player with id " + id + " was deleted successfully.");
             } catch (Exception e) {
                 System.out.println("Error occured while deleting record " + e);
                 e.printStackTrace();
@@ -240,53 +243,103 @@ public class Controller implements Initializable {
 
     }
 
-    public String imgSelector(String imgString) {
+    public void imgSelector(String img) {
+        String imageURL = null;
 
 
-        int img = 0;
         switch (img) {
-            case 1:
-                imgString = "C:\\Users\\nash\\PremierLeagueAppDB-master\\src\\images\\Arsenal.png";
+            case "Black Panther":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Black Panther.png";
+                System.out.println(imageURL);
                 break;
-            case 2:
-                imgString = "C:\\Users\\nash\\PremierLeagueAppDB-master\\src\\images\\Chelsea.png";
+            case "Alexandre Lacazette":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Alexandre Lacazette.png";
+                System.out.println(imageURL);
+                break;
+            case "Nathan Ash":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Nathan Ash.png";
+                System.out.println(imageURL);
+                break;
+            case "Olson Twins":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Olson Twins.png";
+                System.out.println(imageURL);
+                break;
+            case "FGCU":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/FGCU.png";
+                System.out.println(imageURL);
+                break;
+            case "Arsenal":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Arsenal.png";
+                System.out.println(imageURL);
+                break;
+            case "Chelsea":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Chelsea.png";
+                System.out.println(imageURL);
+                break;
+            case "Crystal Palace":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Crystal Palace.png";
+                System.out.println(imageURL);
+                break;
+            case "Liverpool":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Liverpool.png";
+                System.out.println(imageURL);
+                break;
+            case "Newcastle United":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Chelsea.png";
+                System.out.println(imageURL);
+                break;
+            case "Germany":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Germany.png";
+                System.out.println(imageURL);
+                break;
+            case "France":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/France.png";
+                System.out.println(imageURL);
+                break;
+            case "England":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/England.png";
+                System.out.println(imageURL);
+                break;
+            case "United States":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/United States.png";
+                System.out.println(imageURL);
+                break;
+            case "Wakanda":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Wakanda.png";
+                System.out.println(imageURL);
+                break;
+            case "Bournemouth":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/AFC Bournemouth.png";
+                System.out.println(imageURL);
+                break;
+            case "Burnley":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Burnley.png";
+                System.out.println(imageURL);
+                break;
+            case "Everton":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Everton.png";
+                System.out.println(imageURL);
+                break;
+            case "Manchester United":
+                imageURL = "/Users/DaddyNupe/OneDriveFGCU/OneDrive - Florida Gulf Coast University/PremierLeagueAppDB-master/src/images/Manchester United.png";
+                System.out.println(imageURL);
+                break;
         }
-        return imgString;
+
+
+        {
+            try {
+                FileInputStream input = new FileInputStream(imageURL);
+                Image image = new Image(input);
+                textfieldImage.setImage(image);
+
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        //return imageURL;
     }
 
-  /*  FileInputStream input = null;
 
-    {
-            try{
-            input=new FileInputStream(imgSelector(teamtextfield.getText()));
-            }catch(FileNotFoundException e1){
-            e1.printStackTrace();
-            }
-            }
-            Image image=new Image(input);*/
-//imageDisplay = new ImageView(image);
-//imageDisplay.setImage(image);
-
-
-/*
-
-    FileInputStream inputstream;
-    String country = countrytextfield.getText();
-    String player = playertextfield.getText();
-    String team = teamtextfield.getText();
-
-    {
-        try {
-            inputstream = new FileInputStream("images\\" + team + ".png ");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-    }
-        Image image = new Image(inputstream);
-
-//Loading image from URL
-//Image image = new Image(new FileInputStream("url for the image));
-*/
-
-            }
+}
